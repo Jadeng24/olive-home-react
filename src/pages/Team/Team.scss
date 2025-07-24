@@ -1,0 +1,212 @@
+// Team Page Styles
+.team {
+  .team-hero {
+    background-image: linear-gradient(
+        rgba(26, 26, 26, 0.5),
+        rgba(45, 45, 45, 0.5)
+      ),
+      url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+    will-change: transform;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+
+    h1 {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      color: #c6a96b;
+    }
+
+    p {
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+      font-size: 1.3rem;
+      font-weight: 300;
+      letter-spacing: 1px;
+      color: #f5f0e8;
+      max-width: 800px;
+    }
+  }
+
+  .grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+
+  .team-member {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    h4 {
+      color: #c6a96b;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      line-height: 1.6;
+      color: #f5f0e8;
+      margin-bottom: 0.5rem;
+
+      strong {
+        color: #c6a96b;
+      }
+    }
+  }
+
+  .partnership-section {
+    margin-top: 6rem;
+    padding-top: 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+    .partnership-benefits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+
+      .benefit-card {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 2rem;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        i {
+          font-size: 3rem;
+          color: #c6a96b;
+          margin-bottom: 1rem;
+        }
+
+        h3 {
+          color: #c6a96b;
+          margin-bottom: 1rem;
+          font-size: 1.3rem;
+        }
+
+        p {
+          line-height: 1.6;
+          color: #f5f0e8;
+        }
+      }
+    }
+
+    .partnership-cta {
+      text-align: center;
+      margin: 3rem 0;
+    }
+
+    .partnership-form-section {
+      background: rgba(255, 255, 255, 0.02);
+      padding: 3rem;
+      border-radius: 15px;
+      margin-top: 3rem;
+
+      h3 {
+        color: #c6a96b;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 1.8rem;
+      }
+
+      .partnership-form {
+        max-width: 600px;
+        margin: 0 auto;
+
+        .form-submit {
+          text-align: center;
+          margin-top: 2rem;
+        }
+
+        .success-message {
+          background: rgba(139, 153, 119, 0.2);
+          color: #8b9977;
+          padding: 1rem;
+          border-radius: 5px;
+          text-align: center;
+          margin-top: 1rem;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .team {
+    .team-hero {
+      height: 300px;
+      background-attachment: scroll;
+
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+      }
+    }
+
+    .team-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .team-member {
+      padding: 1.5rem;
+
+      .member-image img {
+        width: 120px;
+        height: 120px;
+      }
+    }
+
+    .partnership-section {
+      .partnership-benefits {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .partnership-form-section {
+        padding: 2rem 1rem;
+      }
+    }
+  }
+}
