@@ -13,8 +13,8 @@ const Team: React.FC = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
     <div className="team page">
@@ -23,7 +23,8 @@ const Team: React.FC = () => {
         <div className="hero-content">
           <h1>About Olive Home Co.</h1>
           <p className="hero-subtitle">
-            Transforming houses into homes across Utah with expert design, technology, and outdoor living solutions
+            Transforming houses into homes across Utah with expert design,
+            technology, and outdoor living solutions
           </p>
         </div>
       </div>
@@ -114,16 +115,16 @@ const Team: React.FC = () => {
               <strong>Spencer Wuthrich</strong> - Sales Director
             </p>
             <p>
-              <strong>Sherry Wuthrich</strong> - Design
+              <strong>Sherry Wuthrich</strong> - Procurement Specialist
             </p>
             <p>
-              <strong>Abby Wuthrich</strong> - Customer Support
+              <strong>Abby Wuthrich</strong> - Design & Media
             </p>
             <p>
-              <strong>Aubri Wuthrich</strong> - Customer Engagement
+              <strong>Aubri Wuthrich</strong> - Marketing Specialist
             </p>
             <p>
-              <strong>Hannah Goodwin</strong> - Design & Procurement
+              <strong>Hannah Goodwin</strong> - Design & Media
             </p>
             <p style={{ marginTop: "1rem", color: "#c6a96b" }}>
               Sales, customer relations, design, and procurement services
@@ -132,7 +133,7 @@ const Team: React.FC = () => {
           <div className="team-member">
             <h4>Support</h4>
             <p>
-              <strong>Kaylee Wuthrich</strong> - Billing & Support
+              <strong>Kaylee Wuthrich</strong> - Customer Support
             </p>
             <p>
               <strong>Krista Wuthrich</strong> - Customer Support

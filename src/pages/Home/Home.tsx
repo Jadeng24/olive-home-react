@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import "./Home.scss";
 
@@ -14,8 +14,8 @@ const Home: React.FC = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
     <div className="home page">
@@ -54,8 +54,9 @@ const Home: React.FC = () => {
           <div className="card">
             <h3>Home Technology</h3>
             <p>
-              Integrate smart home systems, entertainment centers, and
-              cutting-edge technology for modern, connected living.
+              Integrate smart home/office systems, video conferencing,
+              entertainment centers, and cutting-edge technology for modern,
+              connected living.
             </p>
           </div>
           <div className="card">
