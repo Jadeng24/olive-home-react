@@ -40,6 +40,13 @@ The guide covers everything from basic terminal navigation to using Git for vers
    ```bash
    cd Desktop
    ```
+   
+   **Navigation tips:**
+   - `cd folder-name` - move forward into a folder
+   - `cd ..` - move back one folder
+   - `pwd` (Mac) or `cd` (Windows) - see where you are
+   - `ls` (Mac) or `dir` (Windows) - list folders/files
+   
 3. Clone the repository:
    ```bash
    git clone https://github.com/Jadeng24/olive-home-react.git
