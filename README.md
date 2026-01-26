@@ -25,8 +25,8 @@ The guide covers everything from basic terminal navigation to using Git for vers
 
 ## Prerequisites
 
-- Install Git
-- Install Node.js (includes npm)
+- Install Git https://git-scm.com/install/
+- Install Node.js  https://nodejs.org/en/download
 - Have access to your Bluehost cPanel
   - Go to: https://www.bluehost.com/my-account/hosting/details/sites/15398605/files
   - Click on 'File Manager'
