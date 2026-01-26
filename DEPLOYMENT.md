@@ -14,6 +14,17 @@ The guide covers everything from basic terminal navigation to using Git for vers
 
 ---
 
+## 👀 Reading This Guide
+
+**To view this file in a nicer preview format:**
+
+- **Keyboard shortcut:** `Cmd+Shift+V` (Mac) or `Ctrl+Shift+V` (Windows/Linux)
+- **Menu method:** Right-click the file tab → "Open Preview" or look for preview icon in top-right corner
+
+This works for any `.md` (markdown) file in the project!
+
+---
+
 ## Prerequisites
 
 - Install Git
