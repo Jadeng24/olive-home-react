@@ -9,17 +9,6 @@ Welcome to the Olive Home Co website repository! This guide will help you get st
 
 ---
 
-## 👀 Reading This Guide
-
-**To view this file in a nicer preview format:**
-
-- **Keyboard shortcut:** `Cmd+Shift+V` (Mac) or `Ctrl+Shift+V` (Windows/Linux)
-- **Menu method:** Right-click the file tab → "Open Preview" or look for preview icon in top-right corner
-
-This works for any `.md` (markdown) file in the project!
-
----
-
 ## About This Guide - Olive Home Co React Website (Hosted on Bluehost)
 
 This comprehensive step-by-step guide is designed to help beginners deploy and update the Olive Home React website without any prior coding experience. It walks you through the entire process from:
