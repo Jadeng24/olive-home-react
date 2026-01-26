@@ -60,9 +60,9 @@ const Home: React.FC = () => {
             </p>
           </div>
           <div className="card">
-            <h3>Window Treatments</h3>
+            <h3>Window Coverings</h3>
             <p>
-              Custom window treatments for every budget including shutters,
+              Custom window coverings for every budget including shutters,
               shades, blinds, and drapery. Contact us today for a free estimate.
             </p>
           </div>

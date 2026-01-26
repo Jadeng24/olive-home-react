@@ -26,7 +26,7 @@ const WindowCoverings: React.FC = () => {
       <div className="window-coverings-hero" ref={heroRef}>
         <div className="container">
           <h1>WINDOW COVERINGS</h1>
-          <p>Custom Window Treatments for Every Budget & Style</p>
+          <p>Custom Window Coverings for Every Budget & Style</p>
         </div>
       </div>
 
@@ -36,7 +36,7 @@ const WindowCoverings: React.FC = () => {
             <h2>Transform Your Windows</h2>
             <p>
               From elegant shutters to modern motorized blinds, we offer a
-              complete range of window treatments that combine style,
+              complete range of window coverings that combine style,
               functionality, and energy efficiency. Our expert team provides
               professional consultation, precise measurement, and flawless
               installation.

@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
           </div>
           <p>
             &copy; 2025 Olive Home Co. All rights reserved. | Eagle Mountain,
-            Utah | 801-900-3329
+            Utah | 801-717-9138 / 801-900-3057
           </p>
         </div>
       </div>

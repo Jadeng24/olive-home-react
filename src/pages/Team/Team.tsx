@@ -92,6 +92,7 @@ const Team: React.FC = () => {
         <div className="team-grid">
           <div className="team-member">
             <h4>Operations</h4>
+            {/*
             <p>
               <strong>Steve Wuthrich</strong> - Vendor Relations Director
             </p>
@@ -104,6 +105,8 @@ const Team: React.FC = () => {
             <p>
               <strong>Jaden Goodwin</strong> - Technology Director
             </p>
+            */}
+            <p>Email: <a href="mailto:info@olivehomeco.com">info@olivehomeco.com</a></p>
             <p style={{ marginTop: "1rem", color: "#c6a96b" }}>
               Leadership, vendor relations, operations management, installation,
               and technology services
@@ -111,6 +114,7 @@ const Team: React.FC = () => {
           </div>
           <div className="team-member">
             <h4>Sales</h4>
+{/*             
             <p>
               <strong>Spencer Wuthrich</strong> - Sales Director
             </p>
@@ -126,18 +130,23 @@ const Team: React.FC = () => {
             <p>
               <strong>Hannah Goodwin</strong> - Design & Media
             </p>
+            */}
+            <p>Email: <a href="mailto:sales@olivehomeco.com">sales@olivehomeco.com</a></p>
             <p style={{ marginTop: "1rem", color: "#c6a96b" }}>
               Sales, customer relations, design, and procurement services
             </p>
           </div>
           <div className="team-member">
             <h4>Support</h4>
+            {/*
             <p>
               <strong>Kaylee Wuthrich</strong> - Customer Support
             </p>
             <p>
               <strong>Krista Wuthrich</strong> - Customer Support
             </p>
+            */}
+            <p>Email: <a href="mailto:contact@olivehomeco.com">contact@olivehomeco.com</a></p>
             <p style={{ marginTop: "1rem", color: "#c6a96b" }}>
               Billing, customer support, and administrative services
             </p>
