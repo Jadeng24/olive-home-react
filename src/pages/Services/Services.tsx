@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import './Services.scss';
+import React, { useState, useEffect, useRef } from "react";
+import "./Services.scss";
 
 interface ServiceFormData {
   service_type: string;
@@ -19,10 +19,11 @@ interface ServiceFormData {
 const Services: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState<ServiceFormData>({
-    service_type: '',
-    _replyto: ''
+    service_type: "",
+    _replyto: "",
   });
   const [showSuccess, setShowSuccess] = useState(false);
+  const [pdfExists, setPdfExists] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,63 +34,82 @@ const Services: React.FC = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  useEffect(() => {
+    const checkPdfExists = async () => {
+      try {
+        const response = await fetch("/services.pdf", {
+          method: "HEAD",
+        });
+        setPdfExists(response.ok);
+      } catch {
+        setPdfExists(false);
+      }
+    };
+
+    checkPdfExists();
+  }, []);
+
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleServiceTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       service_type: value,
-      _replyto: prev._replyto
+      _replyto: prev._replyto,
     }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!formData.service_type) {
-      alert('Please select a service type');
+      alert("Please select a service type");
       return;
     }
-    
+
     if (!formData._replyto) {
-      alert('Please enter your email address');
+      alert("Please enter your email address");
       return;
     }
-    
+
     try {
-      const response = await fetch('https://formspree.io/f/mldlrkar', {
-        method: 'POST',
+      const response = await fetch("https://formspree.io/f/mldlrkar", {
+        method: "POST",
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           ...formData,
-          form_name: 'service-form'
-        })
+          form_name: "service-form",
+        }),
       });
 
       if (response.ok) {
         setShowSuccess(true);
         setFormData({
-          service_type: '',
-          _replyto: ''
+          service_type: "",
+          _replyto: "",
         });
         setTimeout(() => setShowSuccess(false), 5000);
       }
     } catch (error) {
-      console.error('Form submission error:', error);
-      alert('There was a problem submitting your form. Please try again.');
+      console.error("Form submission error:", error);
+      alert("There was a problem submitting your form. Please try again.");
     }
   };
 
@@ -98,7 +118,9 @@ const Services: React.FC = () => {
       <div className="services-hero" ref={heroRef}>
         <div className="container">
           <h1>OUR SERVICES</h1>
-          <p>Professional Installation. Quality Products. Exceptional Service.</p>
+          <p>
+            Professional Installation. Quality Products. Exceptional Service.
+          </p>
         </div>
       </div>
 
@@ -106,14 +128,19 @@ const Services: React.FC = () => {
         <div className="container">
           <div className="form-container">
             <h2>Request Services</h2>
-            <p>Tell us what you'd like, and we'll follow up with details & pricing.</p>
-            
+            <p>
+              Tell us what you'd like, and we'll follow up with details &
+              pricing.
+            </p>
+
             <form className="service-form" onSubmit={handleSubmit}>
               <div className="form-group">
-                <label htmlFor="service-type">What are you interested in?</label>
-                <select 
-                  id="service-type" 
-                  name="service_type" 
+                <label htmlFor="service-type">
+                  What are you interested in?
+                </label>
+                <select
+                  id="service-type"
+                  name="service_type"
                   value={formData.service_type}
                   onChange={handleServiceTypeChange}
                   required
@@ -126,35 +153,35 @@ const Services: React.FC = () => {
               </div>
 
               {/* Free Consultation fields */}
-              {formData.service_type === 'free_consult' && (
+              {formData.service_type === "free_consult" && (
                 <div className="service-fields">
                   <div className="form-group">
                     <label htmlFor="consult-name">Full Name</label>
-                    <input 
-                      type="text" 
-                      id="consult-name" 
+                    <input
+                      type="text"
+                      id="consult-name"
                       name="consult_name"
-                      value={formData.consult_name || ''}
+                      value={formData.consult_name || ""}
                       onChange={handleInputChange}
                     />
                   </div>
                   <div className="form-group">
                     <label htmlFor="consult-phone">Phone Number</label>
-                    <input 
-                      type="tel" 
-                      id="consult-phone" 
+                    <input
+                      type="tel"
+                      id="consult-phone"
                       name="consult_phone"
-                      value={formData.consult_phone || ''}
+                      value={formData.consult_phone || ""}
                       onChange={handleInputChange}
                     />
                   </div>
                   <div className="form-group">
                     <label htmlFor="consult-date">Preferred Date</label>
-                    <input 
-                      type="date" 
-                      id="consult-date" 
+                    <input
+                      type="date"
+                      id="consult-date"
                       name="consult_date"
-                      value={formData.consult_date || ''}
+                      value={formData.consult_date || ""}
                       onChange={handleInputChange}
                     />
                   </div>
@@ -162,47 +189,49 @@ const Services: React.FC = () => {
               )}
 
               {/* Window Treatment Quote fields */}
-              {formData.service_type === 'window_quote' && (
+              {formData.service_type === "window_quote" && (
                 <div className="service-fields">
                   <div className="form-group">
                     <label htmlFor="window-name">Full Name</label>
-                    <input 
-                      type="text" 
-                      id="window-name" 
+                    <input
+                      type="text"
+                      id="window-name"
                       name="window_name"
-                      value={formData.window_name || ''}
+                      value={formData.window_name || ""}
                       onChange={handleInputChange}
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="window-phone">Phone Number (Optional)</label>
-                    <input 
-                      type="tel" 
-                      id="window-phone" 
+                    <label htmlFor="window-phone">
+                      Phone Number (Optional)
+                    </label>
+                    <input
+                      type="tel"
+                      id="window-phone"
                       name="window_phone"
-                      value={formData.window_phone || ''}
+                      value={formData.window_phone || ""}
                       onChange={handleInputChange}
                     />
                   </div>
                   <div className="form-group">
                     <label htmlFor="window-count">How many windows?</label>
-                    <input 
-                      type="number" 
-                      id="window-count" 
-                      name="window_count" 
+                    <input
+                      type="number"
+                      id="window-count"
+                      name="window_count"
                       placeholder="e.g. 3"
-                      value={formData.window_count || ''}
+                      value={formData.window_count || ""}
                       onChange={handleInputChange}
                     />
                   </div>
                   <div className="form-group">
                     <label htmlFor="zip">What's your Zip Code?</label>
-                    <input 
-                      type="text" 
-                      id="zip" 
-                      name="zip_code" 
+                    <input
+                      type="text"
+                      id="zip"
+                      name="zip_code"
                       placeholder="e.g. 84005"
-                      value={formData.zip_code || ''}
+                      value={formData.zip_code || ""}
                       onChange={handleInputChange}
                     />
                   </div>
@@ -210,24 +239,24 @@ const Services: React.FC = () => {
               )}
 
               {/* Home Technology fields */}
-              {formData.service_type === 'home_tech' && (
+              {formData.service_type === "home_tech" && (
                 <div className="service-fields">
                   <div className="form-group">
                     <label htmlFor="tech-name">Full Name</label>
-                    <input 
-                      type="text" 
-                      id="tech-name" 
+                    <input
+                      type="text"
+                      id="tech-name"
                       name="tech_name"
-                      value={formData.tech_name || ''}
+                      value={formData.tech_name || ""}
                       onChange={handleInputChange}
                     />
                   </div>
                   <div className="form-group">
                     <label htmlFor="tech-system">What system?</label>
-                    <select 
-                      id="tech-system" 
+                    <select
+                      id="tech-system"
                       name="tech_system"
-                      value={formData.tech_system || ''}
+                      value={formData.tech_system || ""}
                       onChange={handleInputChange}
                     >
                       <option value="">Select…</option>
@@ -238,12 +267,14 @@ const Services: React.FC = () => {
                     </select>
                   </div>
                   <div className="form-group">
-                    <label htmlFor="tech-details">Any additional details?</label>
-                    <textarea 
-                      id="tech-details" 
-                      name="tech_details" 
+                    <label htmlFor="tech-details">
+                      Any additional details?
+                    </label>
+                    <textarea
+                      id="tech-details"
+                      name="tech_details"
                       rows={3}
-                      value={formData.tech_details || ''}
+                      value={formData.tech_details || ""}
                       onChange={handleInputChange}
                     />
                   </div>
@@ -252,29 +283,60 @@ const Services: React.FC = () => {
 
               <div className="form-group">
                 <label htmlFor="_replyto">Your Email</label>
-                <input 
-                  type="email" 
-                  id="_replyto" 
-                  name="_replyto" 
+                <input
+                  type="email"
+                  id="_replyto"
+                  name="_replyto"
                   value={formData._replyto}
                   onChange={handleInputChange}
-                  required 
+                  required
                 />
               </div>
-              
-              <input type="text" name="_gotcha" style={{ display: 'none' }} />
 
-              <button type="submit" className="btn">Submit</button>
-              
+              <input type="text" name="_gotcha" style={{ display: "none" }} />
+
+              <button type="submit" className="btn">
+                Submit
+              </button>
+
               {showSuccess && (
                 <div className="success-message">
-                  Your form has been submitted successfully! We will contact you shortly.
+                  Your form has been submitted successfully! We will contact you
+                  shortly.
                 </div>
               )}
             </form>
           </div>
         </div>
       </div>
+
+      {pdfExists && (
+        <div className="container">
+          <div className="catalog-section">
+            <h2>Service Information</h2>
+            <p>View detailed information about our services</p>
+            <div className="pdf-container">
+              <iframe
+                src="/services.pdf"
+                title="Services Information"
+                className="pdf-viewer"
+              />
+            </div>
+            <div className="fallback-message">
+              <p>
+                Can't see the document?{" "}
+                <a
+                  href="/services.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Click here to download the PDF
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

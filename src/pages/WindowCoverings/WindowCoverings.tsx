@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./WindowCoverings.scss";
 import blindsImage from "../../assets/blinds.png";
 import shadesImage from "../../assets/shades.png";
@@ -7,6 +7,7 @@ import shuttersImage from "../../assets/shutters.png";
 
 const WindowCoverings: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
+  const [pdfExists, setPdfExists] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +20,21 @@ const WindowCoverings: React.FC = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const checkPdfExists = async () => {
+      try {
+        const response = await fetch("/window-coverings-catalog.pdf", {
+          method: "HEAD",
+        });
+        setPdfExists(response.ok);
+      } catch {
+        setPdfExists(false);
+      }
+    };
+
+    checkPdfExists();
   }, []);
 
   return (
@@ -143,6 +159,35 @@ const WindowCoverings: React.FC = () => {
               </a>
             </div>
           </div>
+
+          {pdfExists && (
+            <div className="catalog-section">
+              <h2>Browse Our Catalog</h2>
+              <p>
+                View our complete selection of window covering options, styles,
+                and colors
+              </p>
+              <div className="pdf-container">
+                <iframe
+                  src="/window-coverings-catalog.pdf"
+                  title="Window Coverings Catalog"
+                  className="pdf-viewer"
+                />
+              </div>
+              <div className="fallback-message">
+                <p>
+                  Can't see the catalog?{" "}
+                  <a
+                    href="/window-coverings-catalog.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Click here to download the PDF
+                  </a>
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

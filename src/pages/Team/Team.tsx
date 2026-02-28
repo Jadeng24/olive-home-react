@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Team.scss";
 
 const Team: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
+  const [pdfExists, setPdfExists] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +16,21 @@ const Team: React.FC = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const checkPdfExists = async () => {
+      try {
+        const response = await fetch("/team.pdf", {
+          method: "HEAD",
+        });
+        setPdfExists(response.ok);
+      } catch {
+        setPdfExists(false);
+      }
+    };
+
+    checkPdfExists();
   }, []);
   return (
     <div className="team page">
@@ -106,7 +122,10 @@ const Team: React.FC = () => {
               <strong>Jaden Goodwin</strong> - Technology Director
             </p>
             */}
-            <p>Email: <a href="mailto:info@olivehomeco.com">info@olivehomeco.com</a></p>
+            <p>
+              Email:{" "}
+              <a href="mailto:info@olivehomeco.com">info@olivehomeco.com</a>
+            </p>
             <p style={{ marginTop: "1rem", color: "#c6a96b" }}>
               Leadership, vendor relations, operations management, installation,
               and technology services
@@ -114,7 +133,7 @@ const Team: React.FC = () => {
           </div>
           <div className="team-member">
             <h4>Sales</h4>
-{/*             
+            {/*             
             <p>
               <strong>Spencer Wuthrich</strong> - Sales Director
             </p>
@@ -131,7 +150,10 @@ const Team: React.FC = () => {
               <strong>Hannah Goodwin</strong> - Design & Media
             </p>
             */}
-            <p>Email: <a href="mailto:sales@olivehomeco.com">sales@olivehomeco.com</a></p>
+            <p>
+              Email:{" "}
+              <a href="mailto:sales@olivehomeco.com">sales@olivehomeco.com</a>
+            </p>
             <p style={{ marginTop: "1rem", color: "#c6a96b" }}>
               Sales, customer relations, design, and procurement services
             </p>
@@ -146,12 +168,39 @@ const Team: React.FC = () => {
               <strong>Krista Wuthrich</strong> - Customer Support
             </p>
             */}
-            <p>Email: <a href="mailto:contact@olivehomeco.com">contact@olivehomeco.com</a></p>
+            <p>
+              Email:{" "}
+              <a href="mailto:contact@olivehomeco.com">
+                contact@olivehomeco.com
+              </a>
+            </p>
             <p style={{ marginTop: "1rem", color: "#c6a96b" }}>
               Billing, customer support, and administrative services
             </p>
           </div>
         </div>
+
+        {pdfExists && (
+          <div className="catalog-section">
+            <h2>More About Us</h2>
+            <p>Learn more about our team and company</p>
+            <div className="pdf-container">
+              <iframe
+                src="/team.pdf"
+                title="Team Information"
+                className="pdf-viewer"
+              />
+            </div>
+            <div className="fallback-message">
+              <p>
+                Can't see the document?{" "}
+                <a href="/team.pdf" target="_blank" rel="noopener noreferrer">
+                  Click here to download the PDF
+                </a>
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

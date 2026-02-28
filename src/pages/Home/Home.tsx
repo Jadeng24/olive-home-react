@@ -1,9 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.scss";
 
 const Home: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
+  const [pdfExists, setPdfExists] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +17,21 @@ const Home: React.FC = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const checkPdfExists = async () => {
+      try {
+        const response = await fetch("/home.pdf", {
+          method: "HEAD",
+        });
+        setPdfExists(response.ok);
+      } catch {
+        setPdfExists(false);
+      }
+    };
+
+    checkPdfExists();
   }, []);
   return (
     <div className="home page">
@@ -67,6 +83,28 @@ const Home: React.FC = () => {
             </p>
           </div>
         </div>
+
+        {pdfExists && (
+          <div className="catalog-section">
+            <h2>Learn More</h2>
+            <p>View additional information and resources</p>
+            <div className="pdf-container">
+              <iframe
+                src="/home.pdf"
+                title="Home Information"
+                className="pdf-viewer"
+              />
+            </div>
+            <div className="fallback-message">
+              <p>
+                Can't see the document?{" "}
+                <a href="/home.pdf" target="_blank" rel="noopener noreferrer">
+                  Click here to download the PDF
+                </a>
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
