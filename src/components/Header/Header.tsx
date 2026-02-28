@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import './Header.scss';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import "./Header.scss";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,7 +23,7 @@ const Header: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       if (currentScrollY < lastScrollY || currentScrollY < 100) {
         // Scrolling up or near the top - show header
         setIsHeaderVisible(true);
@@ -32,19 +32,19 @@ const Header: React.FC = () => {
         setIsHeaderVisible(false);
         setIsMenuOpen(false); // Close mobile menu when hiding
       }
-      
+
       setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [lastScrollY]);
 
   return (
-    <header className={`header ${isHeaderVisible ? 'visible' : 'hidden'}`}>
+    <header className={`header ${isHeaderVisible ? "visible" : "hidden"}`}>
       <div className="container">
         <div className="header-content">
           <Link to="/" onClick={closeMenu}>
@@ -54,9 +54,9 @@ const Header: React.FC = () => {
               alt="Olive Home Co. Logo"
             />
           </Link>
-          
-          <div 
-            className={`hamburger-menu ${isMenuOpen ? 'active' : ''}`}
+
+          <div
+            className={`hamburger-menu ${isMenuOpen ? "active" : ""}`}
             onClick={toggleMenu}
           >
             <span></span>
@@ -64,12 +64,12 @@ const Header: React.FC = () => {
             <span></span>
           </div>
 
-          <nav className={`nav ${isMenuOpen ? 'active' : ''}`}>
+          <nav className={`nav ${isMenuOpen ? "active" : ""}`}>
             <ul>
               <li>
                 <Link
                   to="/"
-                  className={`nav-link ${isActiveLink('/') ? 'active' : ''}`}
+                  className={`nav-link ${isActiveLink("/") ? "active" : ""}`}
                   onClick={closeMenu}
                 >
                   Home
@@ -78,7 +78,7 @@ const Header: React.FC = () => {
               <li>
                 <Link
                   to="/services"
-                  className={`nav-link ${isActiveLink('/services') ? 'active' : ''}`}
+                  className={`nav-link ${isActiveLink("/services") ? "active" : ""}`}
                   onClick={closeMenu}
                 >
                   Services
@@ -87,7 +87,7 @@ const Header: React.FC = () => {
               <li>
                 <Link
                   to="/window-coverings"
-                  className={`nav-link ${isActiveLink('/window-coverings') ? 'active' : ''}`}
+                  className={`nav-link ${isActiveLink("/window-coverings") ? "active" : ""}`}
                   onClick={closeMenu}
                 >
                   Window Coverings
@@ -96,16 +96,16 @@ const Header: React.FC = () => {
               <li>
                 <Link
                   to="/team"
-                  className={`nav-link ${isActiveLink('/team') ? 'active' : ''}`}
+                  className={`nav-link ${isActiveLink("/team") ? "active" : ""}`}
                   onClick={closeMenu}
                 >
-                  Team
+                  About Us
                 </Link>
               </li>
               <li>
                 <Link
                   to="/contact"
-                  className={`nav-link ${isActiveLink('/contact') ? 'active' : ''}`}
+                  className={`nav-link ${isActiveLink("/contact") ? "active" : ""}`}
                   onClick={closeMenu}
                 >
                   Contact Us
