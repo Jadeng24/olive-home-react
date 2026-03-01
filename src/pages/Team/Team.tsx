@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import "./Team.scss";
 
 const Team: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
-  const [pdfExists, setPdfExists] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,21 +15,6 @@ const Team: React.FC = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const checkPdfExists = async () => {
-      try {
-        const response = await fetch("/team.pdf", {
-          method: "HEAD",
-        });
-        setPdfExists(response.ok);
-      } catch {
-        setPdfExists(false);
-      }
-    };
-
-    checkPdfExists();
   }, []);
   return (
     <div className="team page">
@@ -179,28 +163,6 @@ const Team: React.FC = () => {
             </p>
           </div>
         </div>
-
-        {pdfExists && (
-          <div className="catalog-section">
-            <h2>More About Us</h2>
-            <p>Learn more about our team and company</p>
-            <div className="pdf-container">
-              <iframe
-                src="/team.pdf"
-                title="Team Information"
-                className="pdf-viewer"
-              />
-            </div>
-            <div className="fallback-message">
-              <p>
-                Can't see the document?{" "}
-                <a href="/team.pdf" target="_blank" rel="noopener noreferrer">
-                  Click here to download the PDF
-                </a>
-              </p>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

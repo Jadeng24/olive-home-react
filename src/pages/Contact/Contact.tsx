@@ -34,7 +34,6 @@ const Contact: React.FC = () => {
 
   const [showSubscriptionSuccess, setShowSubscriptionSuccess] = useState(false);
   const [showPartnershipSuccess, setShowPartnershipSuccess] = useState(false);
-  const [pdfExists, setPdfExists] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,21 +46,6 @@ const Contact: React.FC = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const checkPdfExists = async () => {
-      try {
-        const response = await fetch("/contact.pdf", {
-          method: "HEAD",
-        });
-        setPdfExists(response.ok);
-      } catch {
-        setPdfExists(false);
-      }
-    };
-
-    checkPdfExists();
   }, []);
 
   const handleSubscriptionInputChange = (
@@ -299,32 +283,6 @@ const Contact: React.FC = () => {
             )}
           </form>
         </div>
-
-        {pdfExists && (
-          <div className="catalog-section">
-            <h2>Additional Information</h2>
-            <p>View more details about contacting us</p>
-            <div className="pdf-container">
-              <iframe
-                src="/contact.pdf"
-                title="Contact Information"
-                className="pdf-viewer"
-              />
-            </div>
-            <div className="fallback-message">
-              <p>
-                Can't see the document?{" "}
-                <a
-                  href="/contact.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Click here to download the PDF
-                </a>
-              </p>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

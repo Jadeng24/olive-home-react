@@ -1,12 +1,12 @@
 # How to Update PDFs on the Website
 
-This guide will walk you through uploading PDFs to the Olive Home Co. website. Each page can display a PDF document that you can easily update. No coding experience required!
+This guide will walk you through uploading PDFs to the Olive Home Co. website. Three pages support PDF display that you can easily update. No coding experience required!
 
 ---
 
 ## What You'll Need
 
-- Your PDF file
+- Your PDF file (formatted in **4:3 landscape aspect ratio** for best display)
 - Access to Bluehost cPanel
 - The PDF should be named correctly (see below)
 
@@ -14,38 +14,26 @@ This guide will walk you through uploading PDFs to the Olive Home Co. website. E
 
 ## Which PDF Are You Updating?
 
-Each page has its own PDF that only shows up when the file exists. The PDF file name matches the page route:
-
-### Home Page (`yourdomain.com/`)
-- **File name:** `home.pdf`
-- **Purpose:** General company information, overview materials
-- **Location on page:** Bottom of home page
-
-### Services Page (`yourdomain.com/services`)
-- **File name:** `services.pdf`
-- **Purpose:** Detailed service information, pricing guides
-- **Location on page:** Below the service request form
-
-### Window Coverings Page (`yourdomain.com/window-coverings`)
-- **File name:** `window-coverings.pdf`
-- **Purpose:** Product catalog showing styles, colors, options
-- **Location on page:** Bottom of page (labeled "Browse Our Catalog")
-
-### About Us / Team Page (`yourdomain.com/team`)
-- **File name:** `team.pdf`
-- **Purpose:** Company history, team bios, additional information
-- **Location on page:** Bottom of page (labeled "More About Us")
+Three pages support PDF display. Each PDF only shows up when the file exists on the server:
 
 ### Promotions Page (`yourdomain.com/promotions`)
 - **File name:** `promo.pdf`
 - **Purpose:** Current sales, special offers, limited-time promotions
 - **Location on page:** Main content of the page
 - **Best for:** QR codes, flyers, in-store displays
+- **Display:** Shows "No Active Promotions" message when PDF doesn't exist
 
-### Contact Page (`yourdomain.com/contact`)
-- **File name:** `contact.pdf`
-- **Purpose:** Additional contact information, maps, directions
-- **Location on page:** Bottom of page
+### Window Coverings Page (`yourdomain.com/window-coverings`)
+- **File name:** `window-coverings.pdf`
+- **Purpose:** Product catalog showing styles, colors, options
+- **Location on page:** Bottom of page (labeled "Browse Our Catalog")
+- **Display:** Section hidden when PDF doesn't exist
+
+### Services Page (`yourdomain.com/services`)
+- **File name:** `services.pdf`
+- **Purpose:** Detailed service information, pricing guides
+- **Location on page:** Below the service request form
+- **Display:** Section hidden when PDF doesn't exist
 
 ---
 
@@ -54,14 +42,12 @@ Each page has its own PDF that only shows up when the file exists. The PDF file 
 ### Step 1: Prepare Your PDF
 
 1. Create your document (in Word, Canva, Photoshop, etc.)
-2. Save or export it as a PDF file
-3. Rename the file based on which page you're updating (exactly as shown - lowercase):
-   - Home page: `home.pdf`
-   - Services page: `services.pdf`
-   - Window coverings page: `window-coverings.pdf`
-   - About Us/Team page: `team.pdf`
+2. **Important:** Format your PDF in **4:3 landscape aspect ratio** (horizontal orientation)
+3. Save or export it as a PDF file
+4. Rename the file based on which page you're updating (exactly as shown - lowercase):
    - Promotions page: `promo.pdf`
-   - Contact page: `contact.pdf`
+   - Window coverings page: `window-coverings.pdf`
+   - Services page: `services.pdf`
 
 ---
 
@@ -103,13 +89,10 @@ Each page has its own PDF that only shows up when the file exists. The PDF file 
 
 1. Open a web browser
 2. Go to the appropriate page and scroll to see the PDF section:
-   - Home: `yourdomain.com/`
-   - Services: `yourdomain.com/services`
-   - Window Coverings: `yourdomain.com/window-coverings`
-   - About Us: `yourdomain.com/team`
    - Promotions: `yourdomain.com/promotions`
-   - Contact: `yourdomain.com/contact`
-3. You should see your new PDF displayed on the page
+   - Window Coverings: `yourdomain.com/window-coverings` (scroll to bottom)
+   - Services: `yourdomain.com/services` (scroll to bottom)
+3. You should see your new PDF displayed on the page in landscape format
 4. If you see the old PDF, try refreshing the page (Ctrl+R or Cmd+R)
    - Or do a hard refresh: Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac)
 
@@ -123,8 +106,9 @@ Your PDF is now live on the website! The PDF section will automatically appear o
 
 ## 💡 Tips
 
-- **File names matter**: The files MUST be named exactly as specified (lowercase, matching the page):
-  - `home.pdf`, `services.pdf`, `window-coverings.pdf`, `team.pdf`, `promo.pdf`, `contact.pdf`
+- **File names matter**: The files MUST be named exactly as specified (lowercase):
+  - `promo.pdf`, `window-coverings.pdf`, `services.pdf`
+- **Aspect ratio**: PDFs display best in **4:3 landscape format** (horizontal orientation)
 - **Conditional display**: PDF sections only appear when the file exists - no file means no section shows
 - **QR codes**: Your QR codes don't need to change - they always point to the same URL
 - **Multiple items**: If you want to show multiple documents, combine them into one PDF file before uploading
