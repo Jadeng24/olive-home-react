@@ -25,7 +25,7 @@ const WindowCoverings: React.FC = () => {
   useEffect(() => {
     const checkPdfExists = async () => {
       try {
-        const response = await fetch("/window-coverings-catalog.pdf", {
+        const response = await fetch("/window-coverings.pdf", {
           method: "HEAD",
         });
         setPdfExists(response.ok);
@@ -169,7 +169,7 @@ const WindowCoverings: React.FC = () => {
               </p>
               <div className="pdf-container">
                 <iframe
-                  src="/window-coverings-catalog.pdf"
+                  src="/window-coverings.pdf"
                   title="Window Coverings Catalog"
                   className="pdf-viewer"
                 />
@@ -178,7 +178,7 @@ const WindowCoverings: React.FC = () => {
                 <p>
                   Can't see the catalog?{" "}
                   <a
-                    href="/window-coverings-catalog.pdf"
+                    href="/window-coverings.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
