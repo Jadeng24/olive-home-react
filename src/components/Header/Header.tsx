@@ -95,8 +95,8 @@ const Header: React.FC = () => {
               </li>
               <li>
                 <Link
-                  to="/team"
-                  className={`nav-link ${isActiveLink("/team") ? "active" : ""}`}
+                  to="/about-us"
+                  className={`nav-link ${isActiveLink("/about-us") ? "active" : ""}`}
                   onClick={closeMenu}
                 >
                   About Us

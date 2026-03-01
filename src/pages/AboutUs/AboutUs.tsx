@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
-import "./Team.scss";
+import "./AboutUs.scss";
 
-const Team: React.FC = () => {
+const AboutUs: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -17,9 +17,9 @@ const Team: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
-    <div className="team page">
+    <div className="about-us page">
       {/* Hero Section */}
-      <div className="team-hero" ref={heroRef}>
+      <div className="about-us-hero" ref={heroRef}>
         <div className="hero-content">
           <h1>About Olive Home Co.</h1>
           <p className="hero-subtitle">
@@ -168,4 +168,4 @@ const Team: React.FC = () => {
   );
 };
 
-export default Team;
+export default AboutUs;

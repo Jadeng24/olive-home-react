@@ -4,7 +4,7 @@ import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/Home";
 import Services from "./pages/Services/Services";
 import WindowCoverings from "./pages/WindowCoverings/WindowCoverings";
-import Team from "./pages/Team/Team";
+import AboutUs from "./pages/AboutUs/AboutUs";
 import Contact from "./pages/Contact/Contact";
 import Promotions from "./pages/Promotions/Promotions";
 import "./App.scss";
@@ -19,7 +19,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
             <Route path="/window-coverings" element={<WindowCoverings />} />
-            <Route path="/team" element={<Team />} />
+            <Route path="/about-us" element={<AboutUs />} />
             <Route path="/promotions" element={<Promotions />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
