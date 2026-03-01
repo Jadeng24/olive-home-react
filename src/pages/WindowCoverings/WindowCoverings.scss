@@ -234,6 +234,10 @@
     .catalog-section {
       margin-top: 4rem;
       text-align: center;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      padding: 0 2rem;
 
       h2 {
         color: #c6a96b;
@@ -255,6 +259,9 @@
         margin-bottom: 2rem;
         position: relative;
         width: 100%;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
         padding-top: 75%; // 4:3 aspect ratio (3/4 = 0.75)
 
         .pdf-viewer {
