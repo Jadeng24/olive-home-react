@@ -35,7 +35,7 @@ const Promotions: React.FC = () => {
           <>
             <div className="pdf-container">
               <iframe
-                src="/promo.pdf"
+                src="/promo.pdf#toolbar=0"
                 title="Current Promotions"
                 className="pdf-viewer"
               />

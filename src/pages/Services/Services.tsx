@@ -317,7 +317,7 @@ const Services: React.FC = () => {
             <p>View detailed information about our services</p>
             <div className="pdf-container">
               <iframe
-                src="/services.pdf"
+                src="/services.pdf#toolbar=0"
                 title="Services Information"
                 className="pdf-viewer"
               />

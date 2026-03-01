@@ -4,10 +4,7 @@
     margin-top: 4rem;
     margin-bottom: 4rem;
     text-align: center;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
-    padding: 0 2rem;
+    padding: 0;
 
     h2 {
       color: #c6a96b;
@@ -26,13 +23,10 @@
       border-radius: 8px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       overflow: hidden;
-      margin-bottom: 2rem;
+      margin: 0 auto 2rem auto;
       position: relative;
-      width: 100%;
-      max-width: 1400px;
-      margin-left: auto;
-      margin-right: auto;
-      padding-top: 75%; // 4:3 aspect ratio (3/4 = 0.75)
+      width: 80vw;
+      aspect-ratio: 4 / 3;
 
       .pdf-viewer {
         position: absolute;

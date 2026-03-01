@@ -169,7 +169,7 @@ const WindowCoverings: React.FC = () => {
               </p>
               <div className="pdf-container">
                 <iframe
-                  src="/window-coverings.pdf"
+                  src="/window-coverings.pdf#toolbar=0"
                   title="Window Coverings Catalog"
                   className="pdf-viewer"
                 />
