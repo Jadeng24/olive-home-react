@@ -23,7 +23,6 @@ const Services: React.FC = () => {
     _replyto: "",
   });
   const [showSuccess, setShowSuccess] = useState(false);
-  const [pdfExists, setPdfExists] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,21 +35,6 @@ const Services: React.FC = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const checkPdfExists = async () => {
-      try {
-        const response = await fetch("/services.pdf", {
-          method: "HEAD",
-        });
-        setPdfExists(response.ok);
-      } catch {
-        setPdfExists(false);
-      }
-    };
-
-    checkPdfExists();
   }, []);
 
   const handleInputChange = (
@@ -309,34 +293,6 @@ const Services: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {pdfExists && (
-        <div className="container">
-          <div className="catalog-section">
-            <h2>Service Information</h2>
-            <p>View detailed information about our services</p>
-            <div className="pdf-container">
-              <iframe
-                src="/services.pdf#toolbar=0"
-                title="Services Information"
-                className="pdf-viewer"
-              />
-            </div>
-            <div className="fallback-message">
-              <p>
-                Can't see the document?{" "}
-                <a
-                  href="/services.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Click here to download the PDF
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

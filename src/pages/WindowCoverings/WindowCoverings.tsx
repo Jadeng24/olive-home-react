@@ -28,7 +28,8 @@ const WindowCoverings: React.FC = () => {
         const response = await fetch("/window-coverings.pdf", {
           method: "HEAD",
         });
-        setPdfExists(response.ok);
+        const contentType = response.headers.get("content-type");
+        setPdfExists(response.ok && (contentType?.includes("pdf") || false));
       } catch {
         setPdfExists(false);
       }
