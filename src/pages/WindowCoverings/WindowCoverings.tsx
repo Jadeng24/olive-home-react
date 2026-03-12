@@ -4,6 +4,7 @@ import blindsImage from "../../assets/blinds.png";
 import shadesImage from "../../assets/shades.png";
 import draperyImage from "../../assets/drapery.png";
 import shuttersImage from "../../assets/shutters.png";
+import PDFViewer from "../../components/PDFViewer/PDFViewer";
 
 const WindowCoverings: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -130,6 +131,11 @@ const WindowCoverings: React.FC = () => {
               </div>
             </div>
           </div>
+
+          <PDFViewer 
+            pdfUrl="/window-coverings.pdf" 
+            title="Window Coverings Catalog" 
+          />
 
           <div className="cta-section">
             <h2>Ready to Transform Your Windows?</h2>
