@@ -1,11 +1,9 @@
 // Services Page Styles
 .services {
   .services-hero {
-    background-image: linear-gradient(
-        rgba(26, 26, 26, 0.5),
-        rgba(45, 45, 45, 0.5)
-      ),
-      url('https://olivehomeco.com/images/services-image.jpeg');
+    background-image:
+      linear-gradient(rgba(26, 26, 26, 0.5), rgba(45, 45, 45, 0.5)),
+      url("https://olivehomeco.com/images/services-image.jpeg");
     background-size: cover;
     background-position: center;
     background-attachment: scroll;

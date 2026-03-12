@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./WindowCoverings.scss";
 import blindsImage from "../../assets/blinds.png";
 import shadesImage from "../../assets/shades.png";
@@ -8,6 +8,7 @@ import PDFViewer from "../../components/PDFViewer/PDFViewer";
 
 const WindowCoverings: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
+  const [pdfExists, setPdfExists] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +21,22 @@ const WindowCoverings: React.FC = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const checkPdfExists = async () => {
+      try {
+        const response = await fetch("/window-coverings.pdf", {
+          method: "HEAD",
+        });
+        const contentType = response.headers.get("content-type");
+        setPdfExists(response.ok && (contentType?.includes("pdf") || false));
+      } catch {
+        setPdfExists(false);
+      }
+    };
+
+    checkPdfExists();
   }, []);
 
   return (
@@ -149,6 +166,35 @@ const WindowCoverings: React.FC = () => {
               </a>
             </div>
           </div>
+
+          {pdfExists && (
+            <div className="catalog-section">
+              <h2>Browse Our Catalog</h2>
+              <p>
+                View our complete selection of window covering options, styles,
+                and colors
+              </p>
+              <div className="pdf-container">
+                <iframe
+                  src="/window-coverings.pdf#toolbar=0"
+                  title="Window Coverings Catalog"
+                  className="pdf-viewer"
+                />
+              </div>
+              <div className="fallback-message">
+                <p>
+                  Can't see the catalog?{" "}
+                  <a
+                    href="/window-coverings.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Click here to download the PDF
+                  </a>
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

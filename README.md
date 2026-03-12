@@ -195,7 +195,33 @@ Repeat steps 4-12 whenever you want to make changes.
 
 ---
 
-## 💡 Pro Tips
+## � Updating Promotions (PDF Upload)
+
+The website has a `/promotions` page that displays a PDF file. To update the promotions:
+
+### Option 1: Upload via Bluehost cPanel (Recommended)
+
+1. Create or save your promotion as a PDF file named `promo.pdf`
+2. Go to Bluehost File Manager: **https://www.bluehost.com/my-account/hosting/details/sites/15398605/files**
+3. Navigate to `public_html/website_57cd81b8`
+4. Upload your `promo.pdf` file (if one exists, it will be replaced)
+5. Visit `yourdomain.com/promotions` to see the updated PDF
+
+### Option 2: Include in Build
+
+1. Place your `promo.pdf` file in the `public` folder of the project
+2. Follow the normal deployment steps (Steps 5-12)
+3. The PDF will be deployed with your website
+
+### QR Code Setup
+
+- Your QR code should point to: `yourdomain.com/promotions`
+- When you update `promo.pdf`, the QR code doesn't need to change
+- Visitors will always see the latest promotion
+
+---
+
+## �💡 Pro Tips
 
 - Always test your changes locally at http://localhost:5173/ with `npm run dev` before deploying to production. This helps catch any issues before they go live!
 - Check out **[DEVELOPER-GUIDE.md](./DEVELOPER-GUIDE.md)** for troubleshooting help, using Cascade AI assistant, Git best practices, and more!
